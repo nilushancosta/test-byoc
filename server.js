@@ -2,12 +2,8 @@ const express = require('express');
 const app = express();
 const port = 9090;
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 app.get('/', async (req, res) => {
-  await sleep(2000);
+  console.log("Received a request");
   res.send('Hello World!');
 });
 
