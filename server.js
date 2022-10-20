@@ -1,10 +1,15 @@
+const request = require('request');
+const https = require('https');
+
 const express = require('express');
 const app = express();
-const port = 9090;
+const port = 9990;
 
-app.get('/', async (req, res) => {
+app.get('/passthrough', (req, res) => {
   console.log("Received a request");
-  res.send('Hello World!');
+  request('https://postman-echo.com/get', function (error, response, body) {
+          res.send(body)
+    });
 });
 
 app.listen(port, () => {
